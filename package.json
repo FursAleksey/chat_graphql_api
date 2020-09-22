@@ -24,6 +24,7 @@
     "graphql-depth-limit": "^1.1.0",
     "graphql-iso-date": "^3.6.1",
     "graphql-validation-complexity": "^0.4.2",
+    "mongoose": "^5.10.6",
     "nodemon": "^2.0.4",
     "prettier": "^2.1.2"
   },
