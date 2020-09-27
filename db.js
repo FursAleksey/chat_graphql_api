@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 module.exports = {
   connect: (DB_HOST) => {
@@ -10,22 +10,22 @@ module.exports = {
         useUnifiedTopology: true,
       })
       .then(() => {
-        console.log("MongoDB connected successfully");
+        console.log('MongoDB connected successfully');
       })
       .catch((err) => {
         console.error(err);
-        console.log("Something went wrong");
+        console.log('Something went wrong');
       });
   },
   disconnect: () => {
     mongoose
       .disconnect()
       .then(() => {
-        console.log("MongoDB disconnected successfully");
+        console.log('MongoDB disconnected successfully');
       })
       .catch((err) => {
         console.error(err);
-        console.log("Something went wrong");
+        console.log('Something went wrong');
       });
   },
 };

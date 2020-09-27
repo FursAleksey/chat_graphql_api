@@ -1,10 +1,10 @@
 module.exports = [
   {
     id: 1,
-    content: "first message",
+    content: 'first message',
   },
   {
     id: 2,
-    content: "second message",
+    content: 'second message',
   },
 ];

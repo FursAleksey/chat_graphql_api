@@ -1,4 +1,4 @@
-const messages = require("../messages");
+const messages = require('../messages');
 
 module.exports = {
   messages: () => {
