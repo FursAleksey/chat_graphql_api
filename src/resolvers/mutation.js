@@ -31,9 +31,13 @@ module.exports = {
     }
   },
   signIn: async (parent, { username, email, password }, { models }) => {
-    const user = await models.User.findOne({
-      $or: [{ username }, { email: email.trim().toLowerCase() }],
-    });
+    let user;
+    if (email) {
+      const normalizedEmail = email.trim().toLowerCase();
+      user = await models.User.findOne({ email: normalizedEmail });
+    } else {
+      user = await models.User.findOne({ username });
+    }
 
     if (!user) {
       throw new AuthenticationError('Authentication error');
