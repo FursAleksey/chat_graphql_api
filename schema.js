@@ -13,6 +13,9 @@ const typeDefs = gql`
   }
 
   type Query {
+    me: User!
+    user(username: String!): User!
+    users: [User!]!
     messages: [Message!]!
   }
 
