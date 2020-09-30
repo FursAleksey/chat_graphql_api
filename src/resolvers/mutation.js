@@ -1,19 +1,9 @@
-const messages = require('../messages');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { AuthenticationError } = require('apollo-server-express');
 require('dotenv').config();
 
 module.exports = {
-  newMessage: (parent, { content }) => {
-    const message = {
-      id: messages.length + 1,
-      content,
-    };
-
-    messages.push(message);
-    return message;
-  },
   signUp: async (parent, { username, email, password }, { models }) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -51,4 +41,21 @@ module.exports = {
 
     return jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   },
+  newMessage: async (parent, { text, recipient }, { models, user }) => {
+    if (!user) {
+      throw new AuthenticationError('You must be logged in');
+    }
+
+    try {
+      const newMessage = await models.Message.create({
+        text,
+        author: user.id,
+        recipient
+      });
+      console.log(newMessage);
+      return newMessage;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 };

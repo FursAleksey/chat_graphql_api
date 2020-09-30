@@ -1,10 +1,6 @@
-const messages = require('../messages');
 const { AuthenticationError, ForbiddenError } = require('apollo-server-express');
 
 module.exports = {
-  messages: () => {
-    return messages;
-  },
   me: async (parent, args, { models, user }) => {
     if (!user) {
       throw new AuthenticationError('You must be signed in');
