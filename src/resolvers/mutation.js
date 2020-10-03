@@ -12,7 +12,7 @@ module.exports = {
         username,
         email: email.trim().toLowerCase(),
         password: hashedPassword,
-      });
+      })
 
       return jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
     } catch (err) {
@@ -47,13 +47,11 @@ module.exports = {
     }
 
     try {
-      const newMessage = await models.Message.create({
+      return await models.Message.create({
         text,
         author: user.id,
         recipient
-      });
-      console.log(newMessage);
-      return newMessage;
+      })
     } catch (err) {
       console.error(err);
     }

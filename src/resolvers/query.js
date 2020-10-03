@@ -1,4 +1,4 @@
-const { AuthenticationError, ForbiddenError } = require('apollo-server-express');
+const { AuthenticationError } = require('apollo-server-express');
 
 module.exports = {
   me: async (parent, args, { models, user }) => {
@@ -31,5 +31,8 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
-  }
+  },
+  myMessages: async (parent, args, { models, user }) => {
+    return models.Message.find({ author: user.id });
+  },
 };
