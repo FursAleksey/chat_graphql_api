@@ -35,4 +35,25 @@ module.exports = {
   myMessages: async (parent, args, { models, user }) => {
     return models.Message.find({ author: user.id });
   },
+  messagesWithUser: async (parent, { id }, { models, user }) => {
+    if (!user) {
+      throw new AuthenticationError('You must be signed in');
+    }
+    try {
+      return models.Message.find({
+        $or: [
+          {
+            author: user.id,
+            recipient: id,
+          },
+          {
+            author: id,
+            recipient: user.id,
+          },
+        ],
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };

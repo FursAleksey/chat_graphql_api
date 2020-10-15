@@ -20,6 +20,7 @@ const typeDefs = gql`
     user(username: String!): User!
     users: [User!]!
     myMessages: [Message!]!
+    messagesWithUser(id: ID!): [Message!]!
   }
 
   type Mutation {
