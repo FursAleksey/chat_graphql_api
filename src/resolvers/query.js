@@ -32,9 +32,6 @@ module.exports = {
       console.error(err);
     }
   },
-  myMessages: async (parent, args, { models, user }) => {
-    return models.Message.find({ author: user.id });
-  },
   messagesWithUser: async (parent, { id }, { models, user }) => {
     if (!user) {
       throw new AuthenticationError('You must be signed in');

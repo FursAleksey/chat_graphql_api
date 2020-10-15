@@ -19,7 +19,6 @@ const typeDefs = gql`
     me: User!
     user(username: String!): User!
     users: [User!]!
-    myMessages: [Message!]!
     messagesWithUser(id: ID!): [Message!]!
   }
 
