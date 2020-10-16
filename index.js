@@ -1,6 +1,8 @@
 const { ApolloServer } = require('apollo-server-express');
 const jwt = require('jsonwebtoken');
 const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
 const db = require('./db');
 require('dotenv').config();
 
@@ -22,6 +24,8 @@ const server = new ApolloServer({
   },
 });
 const app = express();
+app.use(helmet());
+app.use(cors());
 
 server.applyMiddleware({ app, path: '/api' });
 
