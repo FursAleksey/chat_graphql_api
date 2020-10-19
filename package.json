@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx nodemon index.js"
+    "dev": "npx nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -14,6 +15,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/FursAleksey/chat_graphql_api/issues"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "homepage": "https://github.com/FursAleksey/chat_graphql_api#readme",
   "dependencies": {
