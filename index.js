@@ -24,8 +24,6 @@ const server = new ApolloServer({
   },
 });
 const app = express();
-app.use(helmet());
-app.use(cors());
 
 server.applyMiddleware({ app, path: '/api' });
 
