@@ -22,7 +22,7 @@ module.exports = {
       console.error(err);
     }
   },
-  users: async (parent, args, { models }) => {
+  users: async (parent, args, { models, user }) => {
     if (!user) {
       throw new AuthenticationError('You must be signed in');
     }
