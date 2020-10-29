@@ -4,5 +4,5 @@ module.exports = {
   },
   recipient: async (message, args, { models }) => {
     return models.User.findById(message.recipient);
-  }
-}
+  },
+};

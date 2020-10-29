@@ -12,7 +12,7 @@ module.exports = {
         username,
         email: email.trim().toLowerCase(),
         password: hashedPassword,
-      })
+      });
 
       return jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
     } catch (err) {
@@ -22,6 +22,7 @@ module.exports = {
   },
   signIn: async (parent, { username, email, password }, { models }) => {
     let user;
+
     if (email) {
       const normalizedEmail = email.trim().toLowerCase();
       user = await models.User.findOne({ email: normalizedEmail });
@@ -50,10 +51,10 @@ module.exports = {
       return await models.Message.create({
         text,
         author: user.id,
-        recipient
-      })
+        recipient,
+      });
     } catch (err) {
       console.error(err);
     }
-  }
+  },
 };

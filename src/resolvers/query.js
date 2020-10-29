@@ -6,7 +6,6 @@ module.exports = {
       throw new AuthenticationError('You must be signed in');
     }
     try {
-      console.log(user);
       return await models.User.findById(user.id);
     } catch (err) {
       console.error(err);
@@ -22,7 +21,7 @@ module.exports = {
       console.error(err);
     }
   },
-  users: async (parent, args, { models }) => {
+  users: async (parent, args, { models, user }) => {
     if (!user) {
       throw new AuthenticationError('You must be signed in');
     }
