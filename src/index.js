@@ -6,10 +6,10 @@ const db = require('./db');
 require('dotenv').config();
 
 const typeDefs = require('./schema');
-const resolvers = require('./src/resolvers');
-const models = require('./src/models');
+const resolvers = require('./resolvers');
+const models = require('./models');
 
-const { getUser } = require('./src/services');
+const { getUser } = require('./services');
 
 const port = process.env.PORT || 4000;
 
